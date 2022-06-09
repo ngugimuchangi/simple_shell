@@ -3,20 +3,24 @@
 /**
  * child - creates a child process and runs
  * execve system call
- * @line: pointer to command
+ * @cmds: array of pointers
  * @argv: array of arguments
+ * @envp: array
  * Return: parent id
  */
-int child(char *line, char *argv[])
+int child(char **cmds, char *argv[], char *envp[])
 {
-	int id;
-	int rv __attribute__((unused)) = 0;
-	char *envs[] = {NULL};
+	int id, rtrn;
 
 	id = fork();
+	wait(NULL);
 	if (id == 0)
 	{
-		rv = execve(line, argv, envs);
+		rtrn = execve(cmds[0], argv, envp);
+		if (rtrn == -1)
+		{
+			printf("bash: %s: No such file or directory\n", cmds[0]);
+		}
 	}
 	return (id);
 }

@@ -6,6 +6,8 @@
 #include <stddef.h>
 #include <unistd.h>
 #include <sys/types.h>
-char *input(void);
-int child(char *line, char *argv[]);
+#include <sys/wait.h>
+#include <string.h>
+int child(char **cmds, char *argv[], char *envp[]);
+char **tokenize(int argc, char *buf);
 #endif
