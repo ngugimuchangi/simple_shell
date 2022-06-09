@@ -7,7 +7,7 @@
  * @envp: array
  * Return: 0 (Success)
  */
-int main(int argc __attribute__((unused)), char *argv[], char *envp[])
+int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)), char *envp[])
 {
 	char **cmds;
 	char *buf = NULL;
@@ -18,7 +18,7 @@ int main(int argc __attribute__((unused)), char *argv[], char *envp[])
 	write(STDOUT_FILENO, "($) ", 4);
 	getline(&buf, &size, stdin);
 	cmds = tokenize(argc, buf);
-	child(cmds, argv, envp);
+	child(cmds, envp);
 	}
 	return (0);
 }

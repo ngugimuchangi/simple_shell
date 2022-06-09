@@ -8,6 +8,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <string.h>
-int child(char **cmds, char *argv[], char *envp[]);
+int child(char **cmds, char *envp[]);
 char **tokenize(int argc, char *buf);
 #endif

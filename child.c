@@ -8,7 +8,7 @@
  * @envp: array
  * Return: parent id
  */
-int child(char **cmds, char *argv[], char *envp[])
+int child(char **cmds, char *envp[])
 {
 	int id, rtrn;
 
@@ -16,7 +16,7 @@ int child(char **cmds, char *argv[], char *envp[])
 	wait(NULL);
 	if (id == 0)
 	{
-		rtrn = execve(cmds[0], argv, envp);
+		rtrn = execve(cmds[0], cmds, envp);
 		if (rtrn == -1)
 		{
 			printf("bash: %s: No such file or directory\n", cmds[0]);
