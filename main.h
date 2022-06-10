@@ -18,6 +18,7 @@ extern char **environ;
 
 /**
  * struct list - structure of commands and arguments
+ * @type: command execution pattern
  * @cmd: command to execute
  * @arg: arguments for the commands
  * @next: pointer to the next list
@@ -26,12 +27,12 @@ extern char **environ;
  */
 typedef struct list
 {
+	int type;
 	char *cmd;
 	char **arg;
-	list *next;
+	struct list *next;
 } cmd_list;
 
-void prompt(void);
 unsigned int logic_tree(char **s);
 int parse_path(char *s1, char **s2);
 ssize_t _strlen(const char *s);
@@ -42,7 +43,8 @@ ssize_t _getline(char **lineptr, size_t *n);
 void *_memset(void *s, int c, size_t n);
 void cd(char *s);
 void _fork(void);
-void err(char *s);
+void err(char *s, int ext);
 cmd_list *add_node(cmd_list **head, char *cmd, char **arg);
 void free_list(cmd_list *head);
+
 #endif
