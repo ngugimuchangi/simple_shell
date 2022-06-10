@@ -43,5 +43,6 @@ void *_memset(void *s, int c, size_t n);
 void cd(char *s);
 void _fork(void);
 void err(char *s);
-
+cmd_list *add_node(cmd_list **head, char *cmd, char **arg);
+void free_list(cmd_list *head);
 #endif
