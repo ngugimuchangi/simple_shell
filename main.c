@@ -19,6 +19,8 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)),
 	getline(&buf, &size, stdin);
 	cmds = tokenize(argc, buf);
 	child(cmds, envp);
+	if (isatty(0) != 1)
+		break;
 	}
 	return (0);
 }
