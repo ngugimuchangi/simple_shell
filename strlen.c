@@ -1,16 +1,16 @@
 #include "main.h"
 
 /**
- * _strlen -Calculate length of string
+ * _strlen - Calculate length of string
  * @s: pointer to string
+ *
  * Return: length of string
  */
 ssize_t _strlen(const char *s)
 {
-	ssize_t i;
+	ssize_t i = 0;
 
-	for (i = 0; s[i] != '\0'; i++)
-	{
-	}
+	for (; s[i]; i++)
+		;
 	return (i);
 }
