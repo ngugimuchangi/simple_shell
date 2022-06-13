@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * parse_path - breaks down the path variable into different
- * directors
+ * directories
  * @path: pointer to different path directories
  *
  * Return: nothing
