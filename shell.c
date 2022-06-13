@@ -12,7 +12,7 @@ int main(void)
 	parse_path(path);
 	while (1)
 	{
-		write(STDOUT_FILENO, "simple_shell:$ ", 15);
+		write(STDOUT_FILENO, "\033[0;32msimple_shell:$ \033[0;37m", 30);
 		if (getline(&lineptr, &n, stdin) == -1)
 		{
 			free(lineptr);
