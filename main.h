@@ -34,6 +34,7 @@ typedef struct list
 	struct list *next;
 } cmd_list;
 
+void _isatty(int *mode);
 unsigned int logic_tree(char **s);
 int parse(char *str, const char *del, char **des);
 void parse_path(char **path);
