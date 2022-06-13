@@ -4,7 +4,6 @@
  * child - creates a child process and runs
  * execve system call
  * @cmds: array of pointers
- * @argv: array of arguments
  * @envp: array
  * Return: parent id
  */
@@ -20,6 +19,7 @@ int child(char **cmds, char *envp[])
 		if (rtrn == -1)
 		{
 			printf("bash: %s: No such file or directory\n", cmds[0]);
+			exit(0);
 		}
 	}
 	return (id);

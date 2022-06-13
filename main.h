@@ -11,5 +11,8 @@
 #include <sys/stat.h>
 int child(char **cmds, char *envp[]);
 char **tokenize(int argc, char *buf);
-char *_which(char *cmds);
+char *path(char *cmd);
+int dir_count(char *pathenv);
+char * _strcat3(char *path, char *sep, char *cmd);
+void _free(char **cmds);
 #endif

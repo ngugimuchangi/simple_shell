@@ -13,14 +13,14 @@ char **tokenize(int argc, char *buf)
 	int i;
 
 	i = 0;
-	args = malloc(sizeof(char *) * argc);
+	args = malloc(sizeof(args) * argc + 1);
 	token = strtok(buf, " \n");
-	args[i] = token;
 	while (token != NULL)
 	{
-		i++;
-		token = strtok(NULL, " \n");
+		args[i] = malloc(sizeof(char) * strlen(token));
 		args[i] = token;
+		token = strtok(NULL, " \n");
+		i++;
 	}
 	return (args);
 }
