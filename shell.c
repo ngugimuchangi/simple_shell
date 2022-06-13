@@ -8,11 +8,19 @@ int main(void)
 {
 	size_t n = 0;
 	char *lineptr = NULL, *av[100], *path[100], cmd[100];
+	int mode = 1;
 
 	parse_path(path);
-	while (1)
+	while (mode)
 	{
+		if (!isatty(0))
+		{
+			mode = 0;
+		}
+		else
+		{
 		write(STDOUT_FILENO, "\033[0;32msimple_shell:$ \033[0;37m", 30);
+		}
 		if (getline(&lineptr, &n, stdin) == -1)
 		{
 			free(lineptr);
