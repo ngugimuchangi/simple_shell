@@ -1,12 +1,12 @@
 #include "main.h"
 /**
  * err - prints error message and exit program
- * * @s: error message
+ * @str: error message
  *
  * Return: nothing
  */
-void err(char *s)
+void err(char *str)
 {
-	write(STDOUT_FILENO, s, _strlen(s));
+	write(STDOUT_FILENO, str, _strlen(str));
 	exit(1);
 }

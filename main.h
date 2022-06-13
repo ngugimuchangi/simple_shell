@@ -4,11 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 
-#define PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
 #define EXEC 0
 #define SEQ 1
 #define AND 2
@@ -34,16 +35,21 @@ typedef struct list
 } cmd_list;
 
 unsigned int logic_tree(char **s);
-int parse_path(char *s1, char **s2);
+int parse(char *str, const char *del, char **des);
+void parse_path(char **path);
+void read_cmd(char *str, char **av);
 ssize_t _strlen(const char *s);
 int _strcmp(char *s1, char *s2);
+char *_strcpy(char *des, char *src);
 char *_strtok(char *str, const char *delim);
-void _strcat(char *s1, char *s2, char *des);
+void concat(char *path, char *cmd, char *abs_path);
 ssize_t _getline(char **lineptr, size_t *n);
 void *_memset(void *s, int c, size_t n);
-void cd(char *s);
-int _fork(void);
-void err(char *s);
+int find_cmd(char *cmd, char **path, char *command);
+void cd(char *str);
+int _fork(char *cmd, char **av);
+void err(char *str);
+void _free(char **ptr);
 cmd_list *add_node(cmd_list **head, char *cmd, char **arg);
 void free_list(cmd_list *head);
 
