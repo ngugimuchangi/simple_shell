@@ -1,10 +1,12 @@
 #include "main.h"
 /**
  * main - shell entry point
+ * @argc: argument count
+ * @argv: argument list
  *
  * Return: Always 0
  */
-int main(void)
+int main(int __attribute__((unused)) argc, char **argv)
 {
 	size_t n = 0;
 	char *lineptr = NULL, *av[100], *path[100], cmd[100];
@@ -30,7 +32,7 @@ int main(void)
 		read_cmd(lineptr, av);
 		_strcpy(cmd, av[0]);
 		if (!find_cmd(av[0], path, cmd))
-			write(STDOUT_FILENO, "No such file or directory\n", 26);
+			no_file(argv[0]);
 		else
 			_fork(cmd, av);
 		_free(av);

@@ -50,6 +50,7 @@ int find_cmd(char *cmd, char **path, char *command);
 void cd(char *str);
 int _fork(char *cmd, char **av);
 void err(char *str);
+void no_file(char *av);
 void _free(char **ptr);
 cmd_list *add_node(cmd_list **head, char *cmd, char **arg);
 void free_list(cmd_list *head);

@@ -7,6 +7,6 @@
  */
 void err(char *str)
 {
-	write(STDOUT_FILENO, str, _strlen(str));
+	write(STDERR_FILENO, str, _strlen(str));
 	exit(1);
 }

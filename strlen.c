@@ -7,9 +7,9 @@
  */
 ssize_t _strlen(const char *s)
 {
-	ssize_t i = 0;
+	ssize_t i;
 
-	for (; s[i]; i++)
+	for (i = 0; s[i]; i++)
 		;
 	return (i);
 }
