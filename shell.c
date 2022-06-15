@@ -25,11 +25,12 @@ int main(int __attribute__((unused)) argc, char **argv)
 		}
 		if (no_input(lineptr) == 0)
 			continue;
-		ext(lineptr);
 		read_cmd(lineptr, av);
+		if (ext(lineptr, argv[0], av))
+				continue;
 		_strcpy(cmd, av[0]);
 		if (!find_cmd(av[0], path, cmd))
-			no_file(argv[0]);
+			err_no_exit(argv[0], ": No such file or directory\n");
 		else
 			_fork(cmd, av);
 	}
