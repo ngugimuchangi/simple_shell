@@ -27,7 +27,7 @@ int main(int __attribute__((unused)) argc, char **argv)
 			continue;
 		read_cmd(lineptr, av);
 		if (ext(lineptr, argv[0], av))
-				continue;
+			continue;
 		_strcpy(cmd, av[0]);
 		if (!find_cmd(av[0], path, cmd))
 			err_no_exit(argv[0], ": No such file or directory\n");
