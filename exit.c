@@ -5,13 +5,17 @@
  *
  * Return: integer
  */
-int _atoi(char *str)
+long int _atoi(char *str)
 {
-	int i, res = 0, p_value = 1;
+	long int i, res = 0, p_value = 1;
 
-	for (i = 0; str[i]; i++)
+	if (str[0] == '-')
+		p_value *= -1;
+	i = (str[0] == '-') ? 1 : 0;
+	for (; str[i]; i++)
 		p_value *= 10;
-	for (i = 0, p_value /= 10; str[i]; i++, p_value /= 10)
+	i = (str[0] == '-') ? 1 : 0;
+	for (p_value /= 10; str[i]; i++, p_value /= 10)
 		res += ((str[i] - 48) * p_value);
 	return (res);
 }
@@ -28,7 +32,8 @@ int _atoi(char *str)
  */
 int ext(char *str, char *prog, char **av)
 {
-	int i, j, status = 0;
+	int i, j;
+	long int status = 0;
 
 	if ((_strcmp(av[0], "exit") == 0))
 	{
@@ -48,15 +53,22 @@ int ext(char *str, char *prog, char **av)
 			err_no_exit(prog, ": exit: numeric argument required\n");
 			return (1);
 		}
-		for (i = 0; av[1][i]; i++)
+		i = (av[1][0] == '-') ? 1 : 0;
+		for (; av[1][i]; i++)
+		{
 			if (av[1][i] < 48 || av[1][i] > 57)
 			{
 				err_no_exit(prog, ": exit: numeric argument required\n");
 				return (1);
 			}
+		}
 		status = _atoi(av[1]);
+		if (status > 255)
+			status %= 256;
+		if (status < 0)
+			status = 256 - ((status * -1) % 256);
 		free(str);
-		exit(status);
+		exit((int) status);
 	}
 	return (0);
 }
