@@ -19,21 +19,19 @@ int main(int __attribute__((unused)) argc, char **argv)
 		signal(SIGINT, handler);
 		if (getline(&lineptr, &n, stdin) == -1)
 		{
-			_free(path);
 			free(lineptr);
 			write(STDOUT_FILENO, "\n", 1);
 			exit(0);
 		}
 		if (no_input(lineptr) == 0)
 			continue;
-		ext(lineptr, path);
+		ext(lineptr);
 		read_cmd(lineptr, av);
 		_strcpy(cmd, av[0]);
 		if (!find_cmd(av[0], path, cmd))
 			no_file(argv[0]);
 		else
 			_fork(cmd, av);
-		_free(av);
 	}
 	return (0);
 }

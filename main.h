@@ -38,7 +38,7 @@ typedef struct list
 void _isatty(int *mode);
 void handler(int num);
 int no_input(char *str);
-void ext(char *str, char **path);
+void ext(char *str);
 unsigned int logic_tree(char **s);
 int parse(char *str, const char *del, char **des);
 void parse_path(char **path);
@@ -55,7 +55,8 @@ void no_file(char *av);
 void cd(char *str);
 int _fork(char *cmd, char **av);
 void err(char *str);
-void _free(char **ptr);
+int setenv(const char *name, const char *value, int overwrite);
+int unsetenv(const char *name);
 cmd_list *add_node(cmd_list **head, char *cmd, char **arg);
 void free_list(cmd_list *head);
 
