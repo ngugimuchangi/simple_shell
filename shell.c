@@ -16,19 +16,17 @@ int main(int __attribute__((unused)) argc, char **argv)
 	while (mode)
 	{
 		_isatty(&mode);
+		signal(SIGINT, handler);
 		if (getline(&lineptr, &n, stdin) == -1)
-		{
-			free(lineptr);
-			continue;
-		}
-		if (_strcmp(lineptr, "\n") == 0)
-			continue;
-		if ((_strcmp(lineptr, "exit\n") == 0))
 		{
 			_free(path);
 			free(lineptr);
-			return (0);
+			write(STDOUT_FILENO, "\n", 1);
+			exit(0);
 		}
+		if (no_input(lineptr) == 0)
+			continue;
+		ext(lineptr, path);
 		read_cmd(lineptr, av);
 		_strcpy(cmd, av[0]);
 		if (!find_cmd(av[0], path, cmd))

@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <signal.h>
 
 #define EXEC 0
 #define SEQ 1
@@ -35,6 +36,9 @@ typedef struct list
 } cmd_list;
 
 void _isatty(int *mode);
+void handler(int num);
+int no_input(char *str);
+void ext(char *str, char **path);
 unsigned int logic_tree(char **s);
 int parse(char *str, const char *del, char **des);
 void parse_path(char **path);
@@ -47,10 +51,10 @@ void concat(char *path, char *cmd, char *abs_path);
 ssize_t _getline(char **lineptr, size_t *n);
 void *_memset(void *s, int c, size_t n);
 int find_cmd(char *cmd, char **path, char *command);
+void no_file(char *av);
 void cd(char *str);
 int _fork(char *cmd, char **av);
 void err(char *str);
-void no_file(char *av);
 void _free(char **ptr);
 cmd_list *add_node(cmd_list **head, char *cmd, char **arg);
 void free_list(cmd_list *head);

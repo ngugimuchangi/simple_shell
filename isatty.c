@@ -2,7 +2,7 @@
 
 /**
  * _isatty - tells you if the standard input are associated with terminal
- * @mode: pointer
+ * @mode: pointer to file descriptor
  *
  * Return: nothing
  */
