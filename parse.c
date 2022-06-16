@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * parse - parses string into words
  * @str: string to parse
@@ -15,7 +16,7 @@ int parse(char *str, const char *del, char **des)
 	piece = strtok(str, del);
 	for (i = 0; piece; i++)
 	{
-		des[i] = piece;
+		des[i] = (piece);
 		piece = strtok(NULL, del);
 	}
 	return (i);
