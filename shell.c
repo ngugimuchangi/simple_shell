@@ -13,11 +13,10 @@ int main(int __attribute__((unused)) argc, char **argv,
 	size_t n = 0;
 	char *lineptr = NULL, *av[100], cmd[100];
 	int mode = 1;
-
+	signal(SIGINT, handler);
 	while (mode)
 	{
 		_isatty(&mode);
-		signal(SIGINT, handler);
 		if (getline(&lineptr, &n, stdin) == -1)
 		{
 			free(lineptr);
