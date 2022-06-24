@@ -34,7 +34,6 @@ int main(int __attribute__((unused)) argc, char **argv,
 			err_no_exit(argv[0], ": No such file or directory\n");
 		else
 			_fork(cmd, av);
-		/*free(lineptr);*/
 	}
 	return (0);
 }

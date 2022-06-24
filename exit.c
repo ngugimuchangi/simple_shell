@@ -67,7 +67,7 @@ int ext(char *str, char *prog, char **av)
 			status %= 256;
 		if (status < 0)
 			status = 256 - ((status * -1) % 256);
-		free(str);
+			free(str);
 		exit((int) status);
 	}
 	return (0);

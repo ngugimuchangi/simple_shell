@@ -5,8 +5,9 @@
  *
  * Return: nothing
  */
-void handler(__attribute__((unused))int num)
+void handler(int num)
 {
+	(void) num;
 	write(STDOUT_FILENO, "\n", 1);
 	exit(0);
 }
